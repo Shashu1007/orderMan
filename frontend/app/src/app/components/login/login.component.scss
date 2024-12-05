@@ -1,0 +1,99 @@
+.auth-container {
+  @apply flex justify-center items-center min-h-screen bg-gray-100;
+  background-size: cover;
+  background-image: url('../../../assets/orderFy.jpeg'); /* Replace with your image path */
+  background-position: center;
+  position: relative;
+  padding: 1rem;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.form-container {
+  @apply bg-white p-8 rounded-lg shadow-md w-full max-w-md relative;
+  box-sizing: border-box;
+}
+
+.form-title {
+  @apply text-2xl font-bold mb-6 text-center;
+}
+
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form-input, .form-select {
+  @apply mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500;
+}
+
+.form-button {
+  @apply w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition duration-300;
+}
+
+.register-link {
+  @apply w-full text-blue-500 py-2 rounded-md hover:text-green-600 transition duration-300 text-center block;
+  margin-top: 1rem;
+}
+
+.validation-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.loading-bar {
+  @apply mb-4;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 4rem 3rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-input, .form-select {
+    font-size: 0.875rem; /* Smaller input font size */
+  }
+
+  .form-button {
+    font-size: 0.875rem; /* Adjust button font size */
+  }
+
+  .register-link {
+    font-size: 0.875rem; /* Adjust link font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 0.5rem;
+  }
+
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+  }
+
+  .form-input, .form-select {
+    font-size: 0.75rem; /* Adjust for small screens */
+  }
+
+  .form-button {
+    padding: 1rem 0; /* Make the button taller */
+    font-size: 0.75rem;
+  }
+
+  .register-link {
+    font-size: 0.75rem;
+  }
+}

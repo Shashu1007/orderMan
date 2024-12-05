@@ -1,0 +1,202 @@
+<nav class="top-0 left-0 right-0 bg-black border-b p-4 pb-1 text-white z-100">
+  <div class="flex justify-between items-center ">
+    <!-- Logo -->
+    <a href="/dashboard" class=" font-bold no-underline flex-shrink-0 bg-green-600 text-white hover:bg-green-800 p-2 mb-4   rounded-lg">
+      Order<span class="text-yellow-400">Man</span>
+    </a>
+
+    <div *ngIf="dropdownOpen" class="fixed inset-0 z-50" (click)="closeDropdown()"></div>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="flex space-x-5 hidden md:flex ml-auto">
+      <!-- Orders Menu -->
+      <li class="relative group">
+        <a
+          class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+          [ngClass]="{'bg-green-700': activeDropdown === 'orders'}"
+          (click)="toggleDropdown('orders', $event)"
+        >
+          Orders
+        </a>
+        <ul
+          class="absolute bg-black text-sm text-white p-2 rounded shadow-lg space-y-2 mt-2 min-w-max"
+          *ngIf="activeDropdown === 'orders'"
+        >
+          <li><a routerLink="/orders/list" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Orders List</a></li>
+          <li><a routerLink="/orders/form" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Orders Summary</a></li>
+        </ul>
+      </li>
+
+      <li class="relative group">
+        <a
+          class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+          [ngClass]="{'bg-green-700': activeDropdown === 'products'}"
+          (click)="toggleDropdown('products', $event)"
+        >
+          Products
+        </a>
+        <ul
+          class="absolute bg-black text-sm text-white p-2 rounded shadow-lg space-y-2 mt-2 min-w-max"
+          *ngIf="activeDropdown === 'products'"
+        >
+          <li><a routerLink="/products/list" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Products List</a></li>
+          <li><a routerLink="/products/summary" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Products Summary</a></li>
+        </ul>
+      </li>
+      <!-- Customers Menu -->
+      <li class="relative group">
+        <a
+          class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+          [ngClass]="{'bg-green-700': activeDropdown === 'customers'}"
+          (click)="toggleDropdown('customers', $event)"
+        >
+          Customers
+        </a>
+        <ul
+          class="absolute bg-black text-sm text-white p-2 rounded shadow-lg space-y-2 mt-2 min-w-max"
+          *ngIf="activeDropdown === 'customers'"
+        >
+         <li><a routerLink="/customers/list" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Customers List</a></li>
+          <li><a routerLink="/customers/summary" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Customers Summary</a></li>
+        </ul>
+      </li>
+
+      <!-- Reports Menu -->
+      <li class="relative group">
+        <a
+          class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+          [ngClass]="{'bg-green-700': activeDropdown === 'reports'}"
+          (click)="toggleDropdown('reports', $event)"
+        >
+          Reports
+        </a>
+        <ul
+          class="absolute bg-black text-sm text-white p-2 rounded shadow-lg space-y-2 mt-2 min-w-max"
+          *ngIf="activeDropdown === 'reports'"
+        >
+          <li><a routerLink="/products/list" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Orders List</a></li>
+          <li><a routerLink="/products/summary" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Products reports</a></li>
+          <li><a routerLink="/products/summary" class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded">Customers reports</a></li>
+
+        </ul>
+      </li>
+
+      <!-- Settings Icon -->
+      <li class="relative group">
+        <span
+          class="m-4 cursor-pointer relative"
+          (click)="toggleDropdown('settings', $event)"
+        >
+          <i class="fa fa-cog fa-spin text-xl text-white hover:text-green-700"></i>
+        </span>
+      
+        <ul
+          class="absolute bg-black text-sm text-white p-2 rounded shadow-lg space-y-2 mt-2 min-w-max"
+          *ngIf="activeDropdown === 'settings'"
+        >
+          <li>
+            <a
+              href="#"
+              class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+              (click)="openSettings('app')"
+            >
+              App Settings
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+              (click)="openSettings('transactional')"
+            >
+              Transactional Settings
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+              (click)="openSettings('general')"
+            >
+              General Settings
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:bg-green-700 no-underline px-2 py-2 rounded"
+              (click)="openSettings('profile')"
+            >
+              Profile
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:bg-red-700 no-underline px-2 py-2 rounded"
+              (click)="logout()"
+            >
+              Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button (click)="toggleMenu()" class="flex items-center">
+        <span class="material-icons transition-transform duration-300" [ngClass]="{'rotate-180  ': menuOpen}">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul
+  class="flex flex-col space-y-5 md:hidden text-white overflow-hidden"
+  [ngClass]="{'animate-slide-in': menuOpen, 'animate-slide-out': !menuOpen}"
+  *ngIf="menuOpen || animationInProgress"
+>
+  <li *ngFor="let menu of ['orders', 'products', 'customers', 'reports']">
+    <a
+      class="flex justify-between items-center text-white no-underline  py-1 mt-2 rounded"
+      [ngClass]="{'bg-green-700': activeDropdown === menu}"
+      (click)="toggleMobileDropdown(menu)"
+    >
+      {{ menu | titlecase }}
+      <span class="material-icons">expand_more</span>
+    </a>
+    <ul 
+      *ngIf="activeDropdown === menu" 
+      class="submenu pl-4 flex flex-col space-y-2 bg-black rounded"
+      [ngClass]="{'open': activeDropdown === menu, 'closing': activeDropdown !== menu && activeDropdown !== null}"
+    >
+      <li><a routerLink="/{{menu}}/list" class="text-white hover:bg-green-700 no-underline px-1 py-1 rounded">{{menu | titlecase}} List</a></li>
+      <li><a routerLink="/{{menu}}/form" class="text-white hover:bg-green-700 no-underline px-1 py-1 rounded">{{menu | titlecase}} Summary</a></li>
+    </ul>
+  </li>
+
+  <li>
+    <a
+      class="flex justify-between items-center text-white no-underline  py-1 rounded"
+      [ngClass]="{'bg-green-700': activeDropdown === 'settings'}"
+      (click)="toggleMobileDropdown('settings')"
+    >
+      Settings
+      <span class="material-icons ">expand_more</span>
+    </a>
+    <ul *ngIf="activeDropdown === 'settings'" class=" mt-2  flex flex-col space-y-4 bg-black rounded submenu">
+      <li><a href="#" class="text-white hover:bg-green-700 no-underline px-1 py-2 rounded" (click)="openSettings('app')">App Settings</a></li>
+      <li><a href="#" class="text-white hover:bg-green-700 no-underline px-1 py-2 rounded" (click)="openSettings('transactional')">Transactional Settings</a></li>
+      <li><a href="#" class="text-white hover:bg-green-700 no-underline px-1 py-2 rounded" (click)="openSettings('general')">General Settings</a></li>
+      <li><a href="#" class="text-white hover:bg-green-700 no-underline px-1 py-2 rounded" (click)="openSettings('profile')">Profile</a></li>
+      <li><a href="#" (click)="logout()" class="text-white hover:bg-red-700 no-underline px-1 py-1 rounded">Logout</a></li>
+    </ul>
+  </li>
+</ul>
+ 
+ 
+
+
+</nav>

@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+.snack-bar-success {
+  background-color: #28a745; /* Green color */
+  color: white;
+}
+
+.snack-bar-error {
+  background-color: #dc3545; /* Red color */
+  color: white;
+}
+
+.snack-bar-info {
+  background-color: #17a2b8; /* Blue color */
+  color: white;
+}
+
+.snack-bar-warning {
+  background-color: #ffc107; /* Yellow color */
+  color: black;
+}

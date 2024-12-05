@@ -1,0 +1,65 @@
+<div class="max-w-4xl mx-auto my-8 p-8 bg-white rounded-lg shadow-lg border border-gray-200">
+  <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">Customer Form</h2>
+  <p class="text-lg text-center text-gray-600 mb-6">Please fill in the details below</p>
+
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <!-- Name Field -->
+    <div class="flex flex-col space-y-2">
+      <label for="name" class="font-medium text-gray-800 flex items-center">
+        Customer Name <span class="text-red-500">*</span>
+      </label>
+      <input matInput formControlName="name" required
+             id="name" class="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+      <mat-error *ngIf="customerForm.get('name')?.hasError('required') && customerForm.get('name')?.touched" class="text-red-500">Name is required</mat-error>
+    </div>
+
+    <!-- Phone Number Field -->
+    <div class="flex flex-col space-y-2">
+      <label for="phoneNumber" class="font-medium text-gray-800 flex items-center">
+        Phone Number <span class="text-red-500">*</span>
+      </label>
+      <input matInput formControlName="phoneNumber" required
+             id="phoneNumber" class="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+      <mat-error *ngIf="customerForm.get('phoneNumber')?.hasError('required') && customerForm.get('phoneNumber')?.touched" class="text-red-500">Phone number is required</mat-error>
+      <mat-error *ngIf="customerForm.get('phoneNumber')?.hasError('pattern') && customerForm.get('phoneNumber')?.touched" class="text-red-500">Invalid phone number</mat-error>
+    </div>
+
+    <!-- Email Field -->
+    <div class="flex flex-col space-y-2">
+      <label for="email" class="font-medium text-gray-800 flex items-center">
+        Email <span class="text-red-500">*</span>
+      </label>
+      <input matInput formControlName="email" required
+             id="email" class="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+      <mat-error *ngIf="customerForm.get('email')?.hasError('required') && customerForm.get('email')?.touched" class="text-red-500">Email is required</mat-error>
+      <mat-error *ngIf="customerForm.get('email')?.hasError('email') && customerForm.get('email')?.touched" class="text-red-500">Invalid email</mat-error>
+    </div>
+
+    <!-- Address Field -->
+    <div class="flex flex-col space-y-2">
+      <label for="address" class="font-medium text-gray-800">Address</label>
+      <input matInput formControlName="address" 
+             id="address" class="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+    </div>
+
+    <!-- Date of Birth Field -->
+    <div class="flex flex-col space-y-2">
+      <label for="dob" class="font-medium text-gray-800 flex items-center">
+        Date of Birth <span class="text-red-500">*</span>
+      </label>
+      <div class="relative">
+        <input matInput [matDatepicker]="picker" formControlName="dob" required
+               id="dob" class="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+        <mat-datepicker-toggle matDatepickerToggleIcon [for]="picker" class="absolute top-1/2 transform -translate-y-1/2 right-4"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <mat-error *ngIf="customerForm.get('dob')?.hasError('required') && customerForm.get('dob')?.touched" class="text-red-500">Date of birth is required</mat-error>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="customerForm.invalid"
+            class="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+      Submit
+    </button>
+  </form>
+</div>

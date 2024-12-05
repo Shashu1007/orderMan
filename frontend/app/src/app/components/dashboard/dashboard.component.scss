@@ -1,0 +1,74 @@
+.dashboard {
+    .sidenav-container {
+      height: 100vh;
+    }
+  
+    .sidenav {
+      width: 250px;
+      background: #1a202c; // Dark theme
+      color: white;
+  
+      .sidenav-header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+  
+        .logo {
+          height: 50px;
+          margin-right: 10px;
+        }
+  
+        h3 {
+          font-size: 1.5rem;
+          margin: 0;
+  
+          .highlight {
+            color: #48bb78; // Green highlight
+          }
+        }
+      }
+  
+      mat-nav-list {
+        a {
+          color: white;
+          text-decoration: none;
+          font-size: 1rem;
+  
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+  
+          &.logout:hover {
+            background: #e53e3e; // Red hover for logout
+          }
+        }
+      }
+    }
+  
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+  
+      .menu-btn {
+        display: none;
+  
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
+  
+      .toolbar-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  
+    .content {
+      padding: 20px;
+      background: #f7fafc; // Light background
+      min-height: calc(100vh - 64px); // Adjust for toolbar height
+    }
+  }
+  

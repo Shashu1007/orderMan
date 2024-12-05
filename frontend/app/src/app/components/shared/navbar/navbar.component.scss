@@ -1,0 +1,160 @@
+.border-b {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  
+  /* Slide-in animation */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Slide-out animation */
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.8);
+    }
+  }
+  
+  /* Applying animations */
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-out {
+    animation: slideOut 0.3s ease-out forwards;
+  }
+  
+
+
+
+  /* Navbar Base Styles */
+nav {
+  .animate-slide-in {
+    animation: slideIn 0.3s forwards;
+  }
+  .animate-slide-out {
+    animation: slideOut 0.3s forwards;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    max-height: 500px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+
+nav {
+  .translate-x-0 {
+    transform: translateX(0);
+  }
+  .translate-x-full {
+    transform: translateX(100%);
+  }
+  .transition-transform {
+    transition: transform 0.3s ease;
+  }
+  .hover\:bg-green-700:hover {
+    background-color: #388e3c; // Tailwind's green-700 color
+  }
+}
+
+
+.overflow-hidden {
+  overflow-y: auto; /* Allows scrolling */
+  max-height: 80vh; /* Adjust the max height as needed */
+}
+
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 16rem; // or the width you need
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%); // hidden by default
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.sidebar.open {
+  transform: translateX(0); // slides in
+}
+
+
+/* Slide-in animation for the submenu */
+@keyframes submenuSlideIn {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 300px; /* Adjust based on your needs */
+    opacity: 1;
+  }
+}
+
+/* Slide-out animation for the submenu */
+@keyframes submenuSlideOut {
+  from {
+    max-height: 300px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+.nav{
+  overflow: hidden;
+}
+ul.absolute {
+  left: 50%; /* Position submenu relative to its parent */
+  transform: translateX(-50%); /* Center the submenu */
+  top: 100%; /* Place below the parent menu */
+  z-index: 100; /* Ensure it is above other elements */
+}
+ul.absolute {
+  max-width: 300px; /* Adjust as necessary */
+  right: auto; /* Prevent overflow */
+  left: 0;
+}
+
+ul.absolute.submenu {
+  position: relative; /* Adjust to column alignment */
+  margin: 0 auto; /* Center within the parent column */
+}

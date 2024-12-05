@@ -1,0 +1,68 @@
+<div class="product-list container mt-4">
+  <div class="row">
+  <mat-form-field >
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="filterName "  (ngModelChange)="onSearch()">
+    <input matInput [(ngModel)]="filterCategory" (ngModelChange)="onSearch()">
+
+  </mat-form-field>
+</div>
+
+<div class="customer-list-table rounded mat-elevation-z8">
+  <table mat-table [dataSource]="products"  class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let product"> {{product.productName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productCategory">
+      <th mat-header-cell *matHeaderCellDef> Category </th>
+      <td mat-cell *matCellDef="let product"> {{product.productC}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="stockQuantity">
+      <th mat-header-cell *matHeaderCellDef>Stock Quantity</th>
+      <td mat-cell *matCellDef="let product"> {{product.stockQuantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Uom">
+      <th mat-header-cell *matHeaderCellDef>UoM</th>
+      <td mat-cell *matCellDef="let product"> {{product.Uom}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pricePerUnit">
+      <th mat-header-cell *matHeaderCellDef>Price Per Unit</th>
+      <td mat-cell *matCellDef="let product"> {{product.pricePerUnit}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="specification">
+      <th mat-header-cell *matHeaderCellDef>Specification</th>
+      <td mat-cell *matCellDef="let product"> {{product.specification}} </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button (click)="onDelete(product.id)">Delete</button>
+        <button mat-button [routerLink]="'/products/edit/' + product.id">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'productName', 'productCategory', 'stockQuantity','Uom','pricePerUnit','specification', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'productName', 'productCategory', 'stockQuantity', 'Uom', 'pricePerUnit', 'specification', 'actions'];"></tr>
+  </table>
+
+  <mat-paginator [length]="totalItems"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 (page)="onPaginateChange($event)">
+  </mat-paginator>
+</div>
+</div>

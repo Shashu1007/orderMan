@@ -1,0 +1,33 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput formControlName="productName" required />
+      <mat-error *ngIf="productForm.get('productName')?.hasError('required')">Product Name is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Product Category </mat-label>
+      <input matInput formControlName="productCategory" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>UoM</mat-label>
+        <input matInput formControlName="Uom" required />
+      </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Stock Quantity</mat-label>
+      <input matInput formControlName="stockQuantity"  />
+    </mat-form-field>
+  
+    
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Price PEr Unit</mat-label>
+      <input matInput formControlName="pricePerUnit"  required  />
+
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">Submit</button>
+  </form>
+  
